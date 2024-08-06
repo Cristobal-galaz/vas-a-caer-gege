@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://i.pinimg.com/originals/76/ed/88/76ed883445f50278239dd8a0a6eb2b7c.jpg'); /* Imagen de fondo */
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
+    background-position: center center; /* Centra la imagen de fondo */
+    background-attachment: fixed; /* Fija la imagen de fondo */
+}
+
+/* Resto de tu CSS */
+h1, p {
+    color: #ffffff; /* Cambia el color del texto a blanco */
+}
+
+.campaign-details {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.campaign-details p:nth-child(3),
+.campaign-details p:nth-child(5) {
+    font-weight: bold;
+}
+
+.campaign-details p:nth-child(6) {
+    font-size: 12px; /* Cambia el tamaño del texto */
+}
+
+#specification-btn,
+#add-to-cart-btn {
+    background-color: #ffffff; /* Color de fondo blanco */
+    color: #000000; /* Color del texto negro */
+    border: none;
+    padding: 10px 30px;
+    cursor: pointer;
+    margin: 10px; /* Ajusta el margen */
+    transition: background-color 0.3s; /* Transición suave para el cambio de color */
+}
+
+#specification-btn:hover,
+#specification-btn:focus,
+#add-to-cart-btn:hover,
+#add-to-cart-btn:focus {
+    background-color: #d40000; /* Color de fondo más oscuro al pasar el cursor o enfocar */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro con transparencia */
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #0004ff;
+    width: 80%;
+}
+
+.close {
+    color: #ff0000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.campaign-item {
+    text-align: center; /* Alineación centrada por defecto */
+    margin-bottom: 20px; /* Espacio inferior entre los bloques */
+}
+
+.campaign-item.text-left {
+    text-align: left; /* Alinea este bloque a la izquierda */
+}
+
+.campaign-item.text-right {
+    text-align: right; /* Alinea este bloque a la derecha */
+}
+
+.btn-primary {
+    background-color: #000000; /* Fondo negro */
+    color: #ffffff; /* Texto blanco */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 10px; /* Ajuste de margen */
+    transition: background-color 0.3s; /* Transición suave para el cambio de color */
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #cb2e2e; /* Fondo más oscuro al pasar el cursor o enfocar */
+}
+
+/* Estilos para mejorar la visibilidad de los enlaces */
+#resultados {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo negro semi-transparente */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+a {
+    color: #ffffff; /* Cambia el color del texto a blanco */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra de texto negra */
+    padding: 5px;
+    border-radius: 3px;
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+a:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo más oscuro al pasar el cursor */
+    color: #ffcc00; /* Cambia el color del texto al pasar el cursor */
+}

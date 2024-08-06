@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Exalumnos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'api/css/style.css' %}">
+    <style>
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .refresh-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: yellow;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .resultados-container {
+            margin-top: 20px;
+        }
+        .download-button-container {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Buscar Ex Alumnos</h1>
+    <form method="post" enctype="multipart/form-data" action="{% url 'search_exalumno' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="csv_file">Subir archivo CSV:</label>
+            <input type="file" name="csv_file" id="csv_file" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="nombres">Nombres:</label>
+            <input type="text" name="nombres" id="nombres" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="profesion">Profesión:</label>
+            <input type="text" name="profesion" id="profesion" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="ciudad">Ciudad:</label>
+            <input type="text" name="ciudad" id="ciudad" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="region">Región:</label>
+            <input type="text" name="region" id="region" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="correo">Correo:</label>
+            <input type="email" name="correo" id="correo" class="form-control">
+        </div>
+        
+        <div class="button-container">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+            <button type="button" class="refresh-button" onclick="location.reload()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                    <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41z"/>
+                    <path d="M1.534 9h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 1.534 9z"/>
+                    <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3z"/>
+                    <path fill-rule="evenodd" d="M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/>
+                </svg>
+            </button>
+        </div>
+    </form>
+
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if resultados %}
+    <div class="resultados-container">
+        <h2>Resultados</h2>
+        <ul>
+            {% for resultado in resultados %}
+            <li>
+                <a href="{{ resultado.link }}">{{ resultado.title }} - {{ resultado.snippet }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="download-button-container">
+            <a href="{% url 'download_csv' %}" class="btn btn-success">Descargar Resultados como CSV</a>
+        </div>
+    </div>
+    {% endif %}
+
+    <script>
+        function autoRefresh() {
+            setInterval(() => {
+                location.reload();
+            }, 180000); // 3 minutos
+        }
+        window.onload = autoRefresh;
+    </script>
+</body>
+</html>

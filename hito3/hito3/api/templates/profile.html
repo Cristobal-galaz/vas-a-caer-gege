@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Exalumno</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'api/css/style.css' %}">
+</head>
+<body>
+    <!-- Barra de Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <!-- Título -->
+            <a class="navbar-brand" href="{% url 'inicio' %}">BusQueda</a>
+            <!-- Espacio flexible -->
+            <div class="flex-grow-1"></div>
+            <!-- Imagen a la derecha -->
+            <a class="navbar-brand ml-auto" href="#">
+                <img src="https://media1.tenor.com/m/j0IgWDNsiw0AAAAC/great-day-good-day.gif" alt="Imagen Derecha" height="30">
+            </a>
+            <!-- Imagen a la derecha -->
+            <a class="navbar-brand" href="#">
+                <img src="https://media1.tenor.com/m/X-hSKfubxwAAAAAC/cristiano-ronaldo-wink.gif" alt="Imagen Derecha" height="30">
+            </a>
+            <a href="#" class="navbar-brand">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-backward" viewBox="0 0 16 16">
+                    <path d="M.5 3.5A.5.5 0 0 1 1 4v3.248l6.267-3.636c.52-.302 1.233.043 1.233.696v2.94l6.267-3.636c.52-.302 1.233.043 1.233.696v7.384c0 .653-.713.998-1.233.696L8.5 8.752v2.94c0 .653-.713.998-1.233.696L1 8.752V12a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5m7 1.133L1.696 8 7.5 11.367zm7.5 0L9.196 8 15 11.367z"/>
+                </svg>
+                <a href="#" class="navbar-brand">Cerrar sesión</a>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1>Detalles del Exalumno</h1>
+        <p><strong>Nombre:</strong> {{ exalumno.nombre }}</p>
+        <p><strong>Profesión:</strong> {{ exalumno.profesion }}</p>
+        <p><strong>Ciudad:</strong> {{ exalumno.ciudad }}</p>
+        <p><strong>correo:</strong> {{ exalumno.correo }}</p>
+
+        <a href="{% url 'search_exalumno' %}" class="btn btn-primary">Nueva Búsqueda</a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
